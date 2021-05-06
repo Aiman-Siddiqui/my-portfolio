@@ -1,0 +1,556 @@
+:root {
+  --primary-color: #282846;
+  --secondary-color: #323250;
+  --mainText: #faf5e4;
+  --secondaryText: #f8b400;
+  /* --box-shadow: 10px 10px 11px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 10px 10px 11px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 10px 10px 11px 0px rgba(0,0,0,0.75); */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--primary-color);
+  color: var(--mainText);
+  height: 100%;
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  line-height: 1.5;
+}
+
+body#background-image {
+  background: url(../images/background.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+body#background-image .overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: rgba(45, 45, 75, 0.8);
+}
+
+h1, h2, h3 {
+  margin: 0;
+  font-weight: 400;
+}
+
+h1.main-heading, h2.main-heading, h3.main-heading {
+  font-size: 5rem;
+}
+
+h1.sub-heading, h2.sub-heading, h3.sub-heading {
+  margin-bottom: 2rem;
+  padding: 0.2rem;
+}
+
+ul {
+  list-style: none
+}
+
+a {
+  text-decoration: none;
+  color: var(--mainText);
+}
+
+header {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+}
+
+main {
+  padding: 4rem;
+  min-height: calc(100vh - 60px);
+}
+
+main#home {
+  overflow: hidden;
+}
+
+main#home h1 {
+  margin-top: 20vh;
+}
+
+main .icons {
+  margin-top: 1rem;
+}
+
+main .icons a {
+  padding: 0.4rem;
+}
+
+main .icons a:hover {
+  color: var(--secondaryText);
+  transition: all 0.5s ease-out;
+}
+
+.secondary-heading {
+  color: var(--secondaryText);
+}
+
+.menu-btn {
+  position: absolute;
+  z-index: 3;
+  right: 35px;
+  top: 35px;
+  cursor: pointer;
+  transition: all 0.5s ease-out;
+}
+
+.menu-btn .btn-line {
+  width: 28px;
+  height: 3px;
+  margin: 0 0 5px 0;
+  background: var(--mainText);
+  transition: all 0.5s ease-out;
+}
+
+/* Chnage menu btn into close X */
+.menu-btn.close {
+  transform: rotate(180deg);
+}
+
+.menu-btn.close .btn-line:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-btn.close .btn-line:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-btn.close .btn-line:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  /* opacity: 0.9; */
+  visibility: hidden;
+}
+
+.menu.show {
+  visibility: visible;
+}
+
+.menu-branding, .menu-nav {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  float: left;
+  width: 50%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.menu-nav {
+  opacity: 0.9;
+  margin: 0;
+  padding: 0;
+  background: var(--primary-color);
+  list-style: none;
+  transform: translate3d(0, -100%, 0);
+  transition: all 0.5s ease-out;
+}
+
+.menu-nav.show {
+  transform: translate3d(0, 0, 0);
+}
+
+.menu-branding {
+  background: var(--secondary-color);
+  transform: translate3d(0, 100%, 0);
+  transition: all 0.5s ease-out;
+}
+
+.menu-branding.show {
+  transform: translate3d(0, 0, 0);
+}
+
+.menu-branding .portrait {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  background: url("../images/aiman.jpg");
+  border-radius: 50%;
+  border: solid 3px var(--secondaryText);
+  object-fit: cover;
+  background-repeat: no-repeat;
+}
+
+.portrait-heading {
+  margin-top: 2rem;
+  font-size: 2rem;
+  text-align: center;
+  width: 90%;
+  height: 60px;
+  background: #373755;
+  border: 3px solid #0F0F2D;
+}
+
+/* .menu-branding .portrait::after {
+  content: '';
+  position: absolute;
+  left: -30px;
+  bottom: 10px;
+  height: 98%;
+  width: 98%;
+  border: 7px solid var(--secondaryText);
+  border-radius: 50%;
+  z-index: -1;
+} */
+
+.menu .nav-item {
+  transform: translate3d(600px, 0, 0);
+  transition: all 0.5s ease-out;
+}
+
+.menu .nav-item.show {
+  transform: translate3d(0, 0, 0);
+}
+
+.menu .nav-item.current>a {
+  color: var(--secondaryText);
+}
+
+.menu .nav-link {
+  display: inline-block;
+  position: relative;
+  font-size: 30px;
+  text-transform: uppercase;
+  padding: 1rem 0;
+  font-weight: 300;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.5s ease-out;
+}
+
+.menu .nav-link:hover {
+  color: var(--secondaryText);
+  transform: scale(1.25);
+}
+
+.nav-item:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.nav-item:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.nav-item:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.nav-item:nth-child(4) {
+  transition-delay: 0.4s;
+}
+
+.nav-item:nth-child(5) {
+  transition-delay: 0.5s;
+}
+
+.nav-item:nth-child(6) {
+  transition-delay: 0.6s;
+}
+
+.resume {
+  padding: 5px;
+  color: var(--secondaryText);
+  border-bottom: 2px solid var(--secondaryText);
+  /* font-size: 20px; */
+  /* text-decoration: underline; */
+  background: #373755;
+  /* border: 2px solid #0F0F2D; */
+  border-radius: 3px;
+  margin: 5px;
+}
+
+.resume:hover {
+    background: var(--secondaryText);
+    color: #000;
+}
+
+.about-info {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-areas:
+    'bio-image bio bio'
+    'job1 job2 job3';
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.bio-image {
+  grid-area: bio-image;
+  margin: auto;
+  border-radius: 50%;
+  border: var(--secondaryText) 3px solid;
+}
+
+.bio {
+  grid-area: bio;
+  font-size: 2rem;
+}
+
+.job1 {
+  grid-area: job1;
+}
+
+.job2 {
+  grid-area: job2;
+}
+
+.job3 {
+  grid-area: job3;
+}
+
+.job {
+  background: #373755;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  border-bottom: var(--secondaryText) 5px solid;
+}
+
+#main-footer {
+  text-align: center;
+  padding: 1rem;
+  background: #0F0F2D;
+  color: var(--mainText);
+  height: 60px;
+}
+
+.projects {
+  display: grid;
+  grid-gap: 40px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.projects img {
+  width: 100%;
+  margin-top: 10px;
+  border: 3px var(--mainText) solid;
+}
+
+.projects img:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  border-color: var(--secondaryText);
+  transition: all 0.5s ease-out;
+}
+
+.btn {
+  display: block;
+  padding: 0.5rem 1rem;
+  border: 0;
+  margin-bottom: 0.3rem;
+  background: black;
+  color: #fff;
+}
+
+.btn:hover {
+  background: #eece1a;
+  color: #000;
+}
+
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.boxes div {
+  font-size: 2rem;
+  border: 3px solid #0F0F2D;
+  padding: 1.5rem 2.5rem;
+  margin-bottom: 3rem;
+  transition: all 0.5s ease-out;
+}
+
+.boxes div:hover {
+  padding: 0.5rem 1.5rem;
+  background: var(--secondaryText);
+  color: #000;
+}
+
+.boxes div:hover span {
+  color: #000;
+}
+
+.item {
+  text-align: center;
+}
+
+.certificates {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  margin-top: 5rem;
+}
+
+.certificates div {
+  font-size: 2rem;
+  border: 3px solid #0F0F2D;
+  padding: 1.5rem 2.5rem;
+  margin-bottom: 3rem;
+  background: #373755;
+}
+
+#contact-form {
+  display: block;
+  max-width: 500px;
+  margin: 0 auto;
+  border: 3px solid #0F0F2D;
+  padding: 15px;
+  border-radius: 10px;
+  background: var(--primary-color);
+  margin-bottom: 50px;
+}
+
+.input-field {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+#contact-form label {
+  line-height: 2rem;
+}
+
+#contact-form textarea {
+  min-height: 100px;
+  font-size: 14px;
+}
+
+#submit-button {
+  margin-top: 20px;
+  width: 100%;
+  font-size: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: black;
+  border: 2px solid black;
+  border-radius: 5px;
+  background-color: var(--mainText);
+}
+
+#submit-button:hover {
+  cursor: pointer;
+  padding: 0.5rem 1.5rem;
+  background: var(--secondaryText);
+}
+
+input[type=password] {
+  display: inline-block;
+}
+
+
+
+
+@media screen and (max-width: 500px) {
+  main {
+    padding: 2rem;
+  }
+
+  main #home h1 {
+    margin-top: 10vh;
+  }
+
+  main .main-heading {
+    margin-top: 1rem;
+    font-size: 5rem;
+  }
+
+  .about-intro {
+    text-align: center;
+  }
+
+  .projects {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    align-items: center;
+    text-align: center;
+  }
+
+  main .main-heading {
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  ul.menu-nav,
+  div.menu-branding {
+    float: none;
+    width: 100%;
+    min-height: 0;
+  }
+
+  ul.menu-nav.show,
+  div.menu-branding.show {
+    transform: translate3d(0, 0, 0);
+  }
+
+  .menu-nav {
+    height: 75vh;
+    transform: translate3d(-100%, 0, 0);
+    font-size: 24px;
+  }
+
+  .menu-branding {
+    height: 25vh;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  .menu-branding .portrait {
+    background: url("../images/aiman_small.jpg");
+    width: 150px;
+    height: 150px;
+  }
+
+  .portrait-heading {
+    display: none;
+  }
+
+  .about-info {
+    grid-template-areas:
+      'bio-image'
+      'bio'
+      'job1'
+      'job2'
+      'job3';
+    grid-template-columns: 1fr;
+  }
+
+  .projects {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1170px) {
+  .projects {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 1171px) {
+  .projects {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
